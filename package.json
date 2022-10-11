@@ -1,0 +1,21 @@
+{
+  "name": "contentlab-example-code-serverless",
+  "private": true,
+  "version": "1.0.0",
+  "dependencies": {
+    "contentlab": "^0.2.0",
+    "contentlab-git-adapter-gitlab": "^0.3.0"
+  },
+  "devDependencies": {
+    "@nestjs/cli": "^9.0.0",
+    "@types/aws-lambda": "^8.10.101",
+    "serverless": "^3.20.0",
+    "serverless-offline": "^8.8.0",
+    "ts-loader": "^9.3.1",
+    "typescript": "^4.7.4"
+  },
+  "scripts": {
+    "build": "node_modules/@nestjs/cli/bin/nest.js build --webpack",
+    "serverless": "export SLS_DEBUG=* && node --inspect node_modules/serverless/bin/serverless offline --config serverless.yml"
+  }
+}
