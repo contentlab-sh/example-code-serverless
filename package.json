@@ -9,6 +9,7 @@
   "devDependencies": {
     "@nestjs/cli": "^9.0.0",
     "@types/aws-lambda": "^8.10.101",
+    "prettier": "^2.7.1",
     "serverless": "^3.20.0",
     "serverless-offline": "^8.8.0",
     "ts-loader": "^9.3.1",
