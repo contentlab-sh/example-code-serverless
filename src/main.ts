@@ -1,26 +1,20 @@
 import { APIGatewayProxyEventV2, Callback, Context, Handler } from 'aws-lambda'
-import { getApiService, GitAdapterOptions } from 'contentlab'
-import {
-  GitLabAdapterModule,
-  GitLabAdapterService,
-  GitLabRepositoryOptions,
-} from 'contentlab-git-adapter-gitlab'
+import { getApiService } from 'contentlab'
+import { createAdapter } from 'contentlab-git-adapter-gitlab'
 
 export const graphql: Handler = async (
   event: APIGatewayProxyEventV2,
   context: Context,
   callback: Callback,
 ) => {
+  const adapter = createAdapter()
+  adapter.setRepositoryOptions({
+    projectPath: process.env.GITLAB_PROJECT_PATH,
+    token: process.env.GITLAB_PERSONAL_ACCESS_TOKEN,
+  })
   const api = await getApiService()
   const response = await api.postGraphQL(
-    {
-      adapterModuleClass: GitLabAdapterModule,
-      adapterServiceClass: GitLabAdapterService,
-      repositoryOptions: {
-        projectPath: process.env.GITLAB_PROJECT_PATH,
-        token: process.env.GITLAB_PERSONAL_ACCESS_TOKEN,
-      },
-    } as GitAdapterOptions<GitLabRepositoryOptions>,
+    adapter,
     event.pathParameters['ref'],
     JSON.parse(event.body),
   )
@@ -44,18 +38,13 @@ export const schema: Handler = async (
   context: Context,
   callback: Callback,
 ) => {
+  const adapter = createAdapter()
+  adapter.setRepositoryOptions({
+    projectPath: process.env.GITLAB_PROJECT_PATH,
+    token: process.env.GITLAB_PERSONAL_ACCESS_TOKEN,
+  })
   const api = await getApiService()
-  const response = await api.getSchema(
-    {
-      adapterModuleClass: GitLabAdapterModule,
-      adapterServiceClass: GitLabAdapterService,
-      repositoryOptions: {
-        projectPath: process.env.GITLAB_PROJECT_PATH,
-        token: process.env.GITLAB_PERSONAL_ACCESS_TOKEN,
-      },
-    } as GitAdapterOptions<GitLabRepositoryOptions>,
-    event.pathParameters['ref'],
-  )
+  const response = await api.getSchema(adapter, event.pathParameters['ref'])
 
   return {
     body: response.data,
