@@ -8,7 +8,7 @@ export const graphql: Handler = async (
   callback: Callback,
 ) => {
   const adapter = createAdapter()
-  adapter.setRepositoryOptions({
+  await adapter.setRepositoryOptions({
     projectPath: process.env.GITLAB_PROJECT_PATH,
     token: process.env.GITLAB_PERSONAL_ACCESS_TOKEN,
   })
@@ -39,7 +39,7 @@ export const schema: Handler = async (
   callback: Callback,
 ) => {
   const adapter = createAdapter()
-  adapter.setRepositoryOptions({
+  await adapter.setRepositoryOptions({
     projectPath: process.env.GITLAB_PROJECT_PATH,
     token: process.env.GITLAB_PERSONAL_ACCESS_TOKEN,
   })

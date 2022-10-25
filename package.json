@@ -3,8 +3,8 @@
   "private": true,
   "version": "1.0.0",
   "dependencies": {
-    "contentlab": "^0.4.0",
-    "contentlab-git-adapter-gitlab": "^0.4.0"
+    "contentlab": "^0.4.1",
+    "contentlab-git-adapter-gitlab": "^0.5.0"
   },
   "devDependencies": {
     "@nestjs/cli": "^9.0.0",
