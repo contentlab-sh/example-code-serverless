@@ -1,6 +1,6 @@
 import { APIGatewayProxyEventV2, Callback, Context, Handler } from 'aws-lambda'
-import { getApiService } from 'contentlab'
-import { createAdapter } from 'contentlab-git-adapter-gitlab'
+import { getApiService } from '@contentlab/contentlab'
+import { createAdapter } from '@contentlab/git-adapter-gitlab'
 
 export const graphql: Handler = async (
   event: APIGatewayProxyEventV2,

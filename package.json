@@ -1,10 +1,10 @@
 {
-  "name": "contentlab-example-code-serverless",
+  "name": "@contentlab/example-code-serverless",
   "private": true,
   "version": "1.0.0",
   "dependencies": {
-    "contentlab": "^0.4.1",
-    "contentlab-git-adapter-gitlab": "^0.5.0"
+    "@contentlab/contentlab": "^0.5.0",
+    "@contentlab/git-adapter-gitlab": "^0.6.0"
   },
   "devDependencies": {
     "@nestjs/cli": "^9.0.0",
