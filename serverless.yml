@@ -15,8 +15,9 @@ functions:
                     method: POST
                     path: '/{ref}/graphql'
         environment:
-            GITLAB_PROJECT_PATH: ${file(./.env.yaml):GITLAB_PROJECT_PATH}
-            GITLAB_PERSONAL_ACCESS_TOKEN: ${file(./.env.yaml):GITLAB_PERSONAL_ACCESS_TOKEN}
+            GITHUB_REPOSITORY_OWNER: ${file(./.env.yaml):GITHUB_REPOSITORY_OWNER}
+            GITHUB_REPOSITORY_NAME: ${file(./.env.yaml):GITHUB_REPOSITORY_NAME}
+            GITHUB_PERSONAL_ACCESS_TOKEN: ${file(./.env.yaml):GITHUB_PERSONAL_ACCESS_TOKEN}
     schema:
         handler: dist/main.schema
         events:
@@ -24,5 +25,6 @@ functions:
                     method: GET
                     path: '/{ref}/schema'
         environment:
-            GITLAB_PROJECT_PATH: ${file(./.env.yaml):GITLAB_PROJECT_PATH}
-            GITLAB_PERSONAL_ACCESS_TOKEN: ${file(./.env.yaml):GITLAB_PERSONAL_ACCESS_TOKEN}
+            GITHUB_REPOSITORY_OWNER: ${file(./.env.yaml):GITHUB_REPOSITORY_OWNER}
+            GITHUB_REPOSITORY_NAME: ${file(./.env.yaml):GITHUB_REPOSITORY_NAME}
+            GITHUB_PERSONAL_ACCESS_TOKEN: ${file(./.env.yaml):GITHUB_PERSONAL_ACCESS_TOKEN}
