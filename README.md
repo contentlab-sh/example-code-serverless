@@ -24,7 +24,7 @@ This example repository holds application code.
    For example, a repository at `https://github.com/contentlab-sh/example-code-serverless` has owner `contentlab-sh` and
    repository name `example-code-serverless`.
 1. Copy `.env.yaml.dist` to `.env.yaml` and fill in your project path and access token.
-1. Compile your code with `npm run build`.
+1. Compile your code with `npm run build` (and do so again after every code change).
 1. Run your [serverless](https://www.serverless.com/framework/docs/getting-started) functions locally with
    `npm run serverless`.
 
