@@ -11,11 +11,7 @@ export const graphql: Handler = async (
   callback: Callback,
 ) => {
   const adapter = createAdapter()
-  await adapter.setRepositoryOptions({
-    repositoryOwner: process.env.GITHUB_REPOSITORY_OWNER,
-    repositoryName: process.env.GITHUB_REPOSITORY_NAME,
-    personalAccessToken: process.env.GITHUB_PERSONAL_ACCESS_TOKEN,
-  } as GitHubRepositoryOptions)
+  await adapter.setRepositoryOptions(getRepositoryOptions())
   const api = await getApiService()
   const response = await api.postGraphQL(
     adapter,
@@ -43,11 +39,7 @@ export const schema: Handler = async (
   callback: Callback,
 ) => {
   const adapter = createAdapter()
-  await adapter.setRepositoryOptions({
-    repositoryOwner: process.env.GITHUB_REPOSITORY_OWNER,
-    repositoryName: process.env.GITHUB_REPOSITORY_NAME,
-    personalAccessToken: process.env.GITHUB_PERSONAL_ACCESS_TOKEN,
-  } as GitHubRepositoryOptions)
+  await adapter.setRepositoryOptions(getRepositoryOptions())
   const api = await getApiService()
   const response = await api.getSchema(adapter, event.pathParameters['ref'])
 
@@ -58,5 +50,17 @@ export const schema: Handler = async (
       'content-type': 'application/graphql+json',
       'X-Ref': response.ref,
     },
+  }
+}
+
+const getRepositoryOptions = (): GitHubRepositoryOptions => {
+  return {
+    repositoryOwner: process.env.GITHUB_REPOSITORY_OWNER,
+    repositoryName: process.env.GITHUB_REPOSITORY_NAME,
+    personalAccessToken: process.env.GITHUB_PERSONAL_ACCESS_TOKEN,
+
+    // customize as desired
+    // pathSchemaFile: 'schema/schema.graphql',
+    // pathEntryFolder: 'entries/',
   }
 }
