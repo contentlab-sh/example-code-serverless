@@ -17,13 +17,14 @@ This example repository holds application code.
 
 1. Run `npm install`
 1. Obtain a GitHub "personal access token (classic)" according to the
-   [GitHub documentation](https://docs.github.com/en/graphql/guides/forming-calls-with-graphql#authenticating-with-graphql).
+   [GitHub documentation](https://docs.github.com/en/graphql/guides/forming-calls-with-graphql#authenticating-with-graphql)
+   from [here](https://github.com/settings/tokens). Make sure to select the top-level scope `repo`.
 1. Get the repository owner and repository name for your **content** repository.
 
    For example, a repository at `https://github.com/contentlab-sh/example-code-serverless` has owner `contentlab-sh` and
    repository name `example-code-serverless`.
-1. Rename `.env.yaml.dist` to `.env.yaml` and fill in your project path and access token.
-1. Compile your code with `npm run build`
+1. Copy `.env.yaml.dist` to `.env.yaml` and fill in your project path and access token.
+1. Compile your code with `npm run build`.
 1. Run your [serverless](https://www.serverless.com/framework/docs/getting-started) functions locally with
    `npm run serverless`.
 
